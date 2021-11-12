@@ -27,5 +27,5 @@ or
 ```
 or the same thing golfed
 ```hs
-@main '5 f puts;@f dup '1 = {pop} {pop dup '1 -n factorial *n} if;
+@main '5 f puts;@f dup '1 = {pop} {pop dup '1 -n f *n} if;
 ```
