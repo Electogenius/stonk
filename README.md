@@ -29,3 +29,14 @@ or the same thing golfed
 ```hs
 @main '5 f puts;@f dup '1 = {pop} {pop dup '1 -n f *n} if;
 ```
+
+## how to actually run stonk
+1. Download all of the files in the repo (except the "r" executable, which is for testing)
+2. Run this on your terminal (requires g++)
+   ```sh
+   g++ main.cpp -std=c++11 -o stonk
+   ```
+3. Now run the compiled executable:
+    ```
+    ./stonk yourfile.stonk
+    ```

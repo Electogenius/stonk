@@ -56,6 +56,10 @@ void $btos(){
   }
   stak.push_back(h.substr(0,h.length()-1));
 }
+void $mod(){
+  int a=(strToInt(pop())), b=(strToInt(pop()));
+  stak.push_back(to_string(b%a));
+}
 //part of the standard library can be written in just stonk so...
 void blockparse(string code);
 void stonklib(){blockparse(R"std(
@@ -98,5 +102,6 @@ void stds() {
   stdf["times"]=$times;
   stdf["s->b"]=$stob;
   stdf["b->s"]=$btos;
+  stdf["%n"]=$mod;
   stonklib();
 }
