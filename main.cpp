@@ -1,4 +1,5 @@
 #define log(a) cout << a << endl
+#define Buffer vector<char>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -46,6 +47,7 @@ void blockparse(string code) {
     }
   };
 }
+
 int main(int argc, char** argv) {
   ifstream cde((string)argv[1]);
   string code;

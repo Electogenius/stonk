@@ -1,12 +1,1 @@
-@main '5 factorial puts;
-
-@factorial
- dup
- '1 =
- {pop}
- {
-  pop dup '1 -n factorial
-  *n
- }
- if
-;
+@main {S;

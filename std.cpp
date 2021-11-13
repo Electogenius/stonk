@@ -27,8 +27,8 @@ void $repeat() {
   int num = strToInt(pop());
   string str(pop());
   string res = "";
-  for (size_t i = 0; i < str.length(); i++) {
-    res += *(new string(num, str[i]));
+  for (size_t index = 0; index < num; index++) {
+    res += str;
   }
   stak.push_back(res);
 }
@@ -38,6 +38,23 @@ void $times(){
   for (size_t i = 0; i < times; i++){
     run(code);
   }
+}
+void $stob(){
+  string arr=pop();
+  Buffer buf;
+  auto ns=split(arr, ',');
+  for (size_t i = 0; i < ns.size(); i++){
+    buf.push_back((char)strToInt(ns[i]));
+  }
+  stak.push_back(bufToStr(buf));
+}
+void $btos(){
+  string h="";
+  Buffer buf=strToBuf(pop());
+  for (size_t i = 0; i < buf.size(); i++) {
+    h+=to_string(buf.at(i))+",";
+  }
+  stak.push_back(h.substr(0,h.length()-1));
 }
 //part of the standard library can be written in just stonk so...
 void blockparse(string code);
@@ -51,12 +68,12 @@ evaluate code:
 
 increment var:
 @++
- ->++.varname               ( store var name)
+ ->++.varname               ( store var name )
  '$ swap +s run             ( get var value )
  '1 +n                      ( add 1 )
  '' swap +s                 ( prepend single quote )
- { ->} $++.varname +s +s run( add " ->" and var name and evaluate )
- {pop} '3 times             ( remove residue )
+ { ->} $++.varname +s +s run ( add " ->" and var name and evaluate )
+ {pop} '4 times             ( remove residue )
 ; ouch this was hard to make
 
 decrement var:
@@ -66,7 +83,7 @@ decrement var:
  '1 -n
  '' swap +s
  { ->} $++.varname +s +s run
- {pop} '3 times
+ {pop} '4 times
 ;
 
 
@@ -79,5 +96,7 @@ void stds() {
   stdf["swap"] = $swap;
   stdf["*sn"] = $repeat;
   stdf["times"]=$times;
+  stdf["s->b"]=$stob;
+  stdf["b->s"]=$btos;
   stonklib();
 }

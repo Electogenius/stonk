@@ -4,7 +4,7 @@ An unintentionally slightly confusing `stak` based language
 For a rough idea for how it looks like here's some examples:
 1. Hello, world!
 ```hs
-@main "Hello, world!" puts;
+@main {Hello, world!} puts;
 ```
 or
 ```hs

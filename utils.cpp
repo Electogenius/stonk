@@ -22,9 +22,25 @@ int strToInt(string str) {
 string str(string st) {
   string res;
   for (int i = 0; i < st.length(); i++) {
-    if(st[i]!='\\'||st[i+1]=='\\')res+=st[i];
+    if (st[i] != '\\' || st[i + 1] == '\\')
+      res += st[i];
   }
   return res;
+}
+string bufToStr(Buffer buf) {
+  string h="";
+  for (size_t i = 0; i < buf.size(); i++) {
+    h+=buf.at(i);
+  }
+  return h;
+}
+Buffer strToBuf(string str){
+  Buffer b;
+  for (size_t i = 0; i < str.length(); i++){
+    b.push_back(str[i]);
+  }
+  
+  return b;
 }
 template <typename t>
 vector<t> slice(vector<t> v, int s, int e) {}
