@@ -1,5 +1,7 @@
 #define log(a) cout << a << endl
 #define Buffer vector<char>
+char** Args;
+bool Inlib;
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -48,7 +50,10 @@ void blockparse(string code) {
   };
 }
 
-int main(int argc, char** argv) {
+void nop(){}
+int start(int argc, char** argv, bool inlib) {
+  Inlib=inlib;
+  Args=argv;
   ifstream cde((string)argv[1]);
   string code;
   stringstream buffer;
@@ -59,3 +64,8 @@ int main(int argc, char** argv) {
   run(blocks.get("main"), "main");
   return 0;
 }
+#ifndef lib
+int main(int argc, char** args){
+  start(argc,args,false);
+}
+#endif

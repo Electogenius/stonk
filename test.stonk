@@ -1,15 +1,1 @@
-@main '1 ->i pop 'fb '20 times;
-@fb
- ' ->str
- $i '3 %n '0 =
- {$str 'Fizz +s ->str pop} {}
- if pop
- $i '5 %n '0 =
- {$str 'Buzz +s ->str pop} {}
- if pop
- $str
- {} {$i ->str pop}
- if pop
- $str puts pop
- 'i ++
-;
+@main 'testlib with 'Hello poots;
