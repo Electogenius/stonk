@@ -60,12 +60,6 @@ void $mod(){
   int a=(strToInt(pop())), b=(strToInt(pop()));
   stak.push_back(to_string(b%a));
 }
-void $import(){
-  if(Inlib)return;
-  string libname=pop();
-  system(("g++ "+libname+".cpp -std=c++11 -o lib"+libname+" && ./lib"+libname+" "+Args[1]).c_str());
-  exit(0);
-}
 
 //part of the standard library can be written in just stonk so...
 void blockparse(string code);
@@ -112,7 +106,6 @@ void stds() {
   stdf["s->b"]=$stob;
   stdf["b->s"]=$btos;
   stdf["%n"]=$mod;
-  stdf["with"]=$import;
 
   stonklib();
 }

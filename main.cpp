@@ -64,8 +64,7 @@ int start(int argc, char** argv, bool inlib) {
   run(blocks.get("main"), "main");
   return 0;
 }
-#ifndef lib
+
 int main(int argc, char** args){
   start(argc,args,false);
 }
-#endif
