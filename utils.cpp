@@ -28,18 +28,18 @@ string str(string st) {
   return res;
 }
 string bufToStr(Buffer buf) {
-  string h="";
+  string h = "";
   for (size_t i = 0; i < buf.size(); i++) {
-    h+=buf.at(i);
+    h += buf.at(i);
   }
   return h;
 }
-Buffer strToBuf(string str){
+Buffer strToBuf(string str) {
   Buffer b;
-  for (size_t i = 0; i < str.length(); i++){
+  for (size_t i = 0; i < str.length(); i++) {
     b.push_back(str[i]);
   }
-  
+
   return b;
 }
 template <typename t>

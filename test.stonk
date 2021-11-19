@@ -1,1 +1,1 @@
-@main ';
+@main 'ab 'cd +b puts;

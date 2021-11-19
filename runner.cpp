@@ -1,16 +1,9 @@
 void run(string code, string blockname = "") {
   vector<string> tkns = split(code, ' ');
-  bool instring = false, incomment=false;
+  bool instring = false, incomment = false;
   string cr = "";
   for (unsigned i = 0; i < tkns.size(); i++) {
     string kw = tkns.at(i);
-    if(incomment){
-      if(kw==")"){
-        incomment=false;
-      };continue;
-    }else if(kw=="("){
-      incomment=true;
-    }
     if (kw[0] == '\n')
       kw = kw.substr(0);
     if (kw == "end") {
@@ -42,20 +35,29 @@ void run(string code, string blockname = "") {
       }
     } else if (instring) {
       cr += " " + kw;
+    } else if (kw == "stop")
+      return;
+    else if (incomment) {
+      if (kw == ")") {
+        incomment = false;
+      };
+      continue;
+    } else if (kw == "(") {
+      incomment = true;
     } else if (kw[0] == '\'') {
       stak.push_back(kw.substr(1));
     } else if (kw[0] == '.') {
       string a = (stak.back());
       stak.pop_back();
       stak.push_back(a + " " + kw.substr(1));
-    } else if(kw[0]=='-'&&kw[1]=='>'){
-      vars[kw.substr(2)]=stak.back();
-    } else if(kw[0]=='$'){
+    } else if (kw[0] == '-' && kw[1] == '>') {
+      vars[kw.substr(2)] = stak.back();
+    } else if (kw[0] == '$') {
       stak.push_back(vars[kw.substr(1)]);
     } else if (kw == "+n") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
       stak.push_back(to_string(a + b));
     } else if (kw == "+s") {
@@ -65,41 +67,41 @@ void run(string code, string blockname = "") {
       stak.pop_back();
       stak.push_back(b + a);
     } else if (kw == "-n") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
       stak.push_back(to_string(b - a));
     } else if (kw == "*n") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
       stak.push_back(to_string(a * b));
     } else if (kw == "/n") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
       stak.push_back(to_string(b / a));
     } else if (kw == "&n") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
       stak.push_back(to_string(b && a));
     } else if (kw == "|n") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
       stak.push_back(to_string(b || a));
     } else if (kw == "=") {
-      int a = strToInt(stak.back());
+      auto a = strToInt(stak.back());
       stak.pop_back();
-      int b = strToInt(stak.back());
+      auto b = strToInt(stak.back());
       stak.pop_back();
-      stak.push_back((b == a)?"1":"0");
+      stak.push_back((b == a) ? "1" : "0");
     } else if (kw == "puts") {
       log(stak.back());
     } else {

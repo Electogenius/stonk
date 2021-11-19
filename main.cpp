@@ -31,7 +31,7 @@ void blockparse(string code) {
         in = "body";
         blockname = cr;
         cr = "";
-      }else {
+      } else {
         cr += c;
       }
     } else if (in == "body") {
@@ -42,7 +42,7 @@ void blockparse(string code) {
           e = blocks.get(blockname) + " ";
         blocks.set(blockname, e + cr);
         cr = "";
-      }else {
+      } else {
         if (c != '\n' || code[i - 1] == '\\')
           cr += c;
       }
@@ -50,10 +50,10 @@ void blockparse(string code) {
   };
 }
 
-void nop(){}
+void nop() {}
 int start(int argc, char** argv, bool inlib) {
-  Inlib=inlib;
-  Args=argv;
+  Inlib = inlib;
+  Args = argv;
   ifstream cde((string)argv[1]);
   string code;
   stringstream buffer;
@@ -65,6 +65,6 @@ int start(int argc, char** argv, bool inlib) {
   return 0;
 }
 
-int main(int argc, char** args){
-  start(argc,args,false);
+int main(int argc, char** args) {
+  start(argc, args, false);
 }
