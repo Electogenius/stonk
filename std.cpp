@@ -48,11 +48,11 @@ void $stob() {
   }
   stak.push_back(bufToStr(buf));
 }
-void $btos() {
+void $btos() {//TODO: fix this
   string h = "";
   Buffer buf = strToBuf(pop());
   for (size_t i = 0; i < buf.size(); i++) {
-    h += to_string(buf.at(i)) + ",";
+    h += to_string((unsigned char)buf.at(i)) + ",";
   }
   stak.push_back(h.substr(0, h.length() - 1));
 }
@@ -70,7 +70,21 @@ void $del() {
 void $strlength() {
   stak.push_back(to_string(pop().length()));
 }
-
+void $addb(){
+  string a=pop(), b=pop();
+  for (size_t i = a.length(); i--;){
+    if(((int)(unsigned char)a[i]+(int)(unsigned char)b[i])>255)a[i-1]++;
+    a[i]=a[i]+b[i];
+  }
+  stak.push_back(a);
+}
+void $subb(){
+  string a=pop(), b=pop(), res="";
+  for (size_t i = 0; i < a.length(); i++){
+    res+=a[i]-b[i];
+  }
+  stak.push_back(res);
+}
 // part of the standard library can be written in just stonk so...
 void blockparse(string code);
 void stonklib() {
@@ -105,10 +119,12 @@ decrement var:
 get var value with name:
 @getvar '$ swap +s run;
 
-@+b
- ->b pop ->a
- 'b del 'a del
- {} $a length-s times
+multiply buffers:
+@*b
+ ->*b.b
+ pop ->*b.a pop
+ {$*b.b $*b.a +b ->*b.b pop} $*b.b times
+ $*b.b $*b.a -b
 ;
 )std");
 }
@@ -126,6 +142,7 @@ void stds() {
   stdf["del"] = $del;
   stdf["[]"] = $nth;
   stdf["length-s"] = $strlength;
-
+  stdf["+b"]=$addb;
+  stdf["-b"]=$subb;
   stonklib();
 }
