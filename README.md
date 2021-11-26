@@ -62,3 +62,5 @@ Ugly, I know.
 Will make a release soon, might contain an executable you can directly download.
 
 Why would anyone need to download this anyways.
+
+Hmm, it seems this language is rather similar to Forth.

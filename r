@@ -1,2 +1,2 @@
 #!/bin/sh
-clear && g++ main.cpp -std=c++11 -o stonk && ./stonk test.stonk
+clear && g++ main.cpp -std=c++11 -o stonk && ./stonk _test.stonk
