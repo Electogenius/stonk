@@ -8,7 +8,7 @@ For a rough idea for how it looks like here's some examples:
     ```
     or
     ```hs
-    @main 'Hello, .world puts;
+    @main 'Hello, .world! puts;
     ```
 2. Factorial
     ```hs
