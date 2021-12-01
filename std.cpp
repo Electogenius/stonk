@@ -122,22 +122,20 @@ evaluate code:
 
 increment var:
 @++
- ->++.varname               ( store var name )
- '$ swap +s run             ( get var value )
- '1 +n                      ( add 1 )
- '' swap +s                 ( prepend single quote )
- { ->} $++.varname +s +s run  ( add " ->" and var name and evaluate )
- {pop} '4 times '++.varname del ( remove residue )
-; ouch this was hard to make
+ ->++.name ( store )
+ getvar (get value )
+ '1 +n ( increment )
+ '-> $++.name +s run ( store )
+ '++.name del ( clean )
+; this is version 2
 
 decrement var:
-@--
- ->++.varname
- '$ swap +s run
- '1 -n
- '' swap +s
- { ->} $++.varname +s +s run
- {pop} '4 times  '++.varname del
+@++
+ ->++.name ( store )
+ getvar (get value )
+ '1 -n ( decrement )
+ '-> $++.name +s run ( store )
+ '++.name del ( clean )
 ;
 
 get var value with name:
