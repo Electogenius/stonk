@@ -14,21 +14,23 @@
 			background-color: #222;
 		}
 	</style>
-	<span data-language="stonk">@main '1 ->i pop 'fb '20 times;
-		@fb
-		 ' ->str
-		 $i '3 %n '0 =
-		 {$str 'Fizz +s ->str pop} {}
-		 if pop
-		 $i '5 %n '0 =
-		 {$str 'Buzz +s ->str pop} {}
-		 if pop
-		 $str
-		 {} {$i ->str pop}
-		 if pop
-		 $str puts pop
-		 'i ++
-		;</span>
+	<pre><code id="code" data-language="stonk">
+@main '1 ->i pop 'fb '20 times;
+@fb
+ pop ' ->str
+ $i '3 %n '0 =
+ {$str 'Fizz +s ->str pop} {}
+ if pop
+ $i '5 %n '0 =
+ {$str 'Buzz +s ->str pop} {}
+ if pop
+ $str
+ {} {$i ->str pop}
+ if pop
+ $str puts pop
+ 'i ++
+;</code>
+	</pre>
 	<script src="hl.js"></script>
 </body>
 </html>
