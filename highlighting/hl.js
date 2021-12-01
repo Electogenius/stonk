@@ -2,40 +2,50 @@ Rainbow.extend("stonk", [
 	{
 		name: 'word',
 		matches: {
-			1:'blockname',
+			1: 'blockname',
 			3: {
 				language: "stonkblock"
 			},
-			7:'variable'
+			7: 'variable'
 		},
 		pattern: /(@[^\n ]+)(\n| )((([^;&]|&(gt|lt|amp);)*))(;)/gs
 	}
 ])
 Rainbow.extend("stonkblock", [
 	{
-		name:'text',
-		pattern:/('|\.)[^ ]*/g,
-		matches:[{
+		name: 'text',
+		pattern: /('|\.)[^ ]*/g,
+		matches: [{
 			name: 'number',
 			pattern: /'\d+/g
 		}]
 	},
 	{
-		name:'operator',
-		pattern:/[+\-*\/%]([a-zA-Z])\b|[=|{}]/g,
-		matches:{
-			1:'type'
+		name: 'operator',
+		pattern: /[+\-*\/%]([a-zA-Z])\b|[=|{}]/g,
+		matches: {
+			1: 'type'
 		}
 	},
 	{
-		name:'variable',
-		pattern:/(\$|\-&gt;)[^ ]+/g,
-		matches:{
-			1:'operator'
+		name: 'variable',
+		pattern: /(\$|\-&gt;)[^ ]+\b/g,
+		matches: {
+			1: 'operator'
 		}
+	},
+	{
+		name:'comment',
+		pattern: /\( .* \)/g
 	}
 ])
-Rainbow.color()
+let update = () => {
+	Rainbow.color(text.value, 'stonk', e => {
+		code.innerHTML = e
+	})
+}
+update()
+text.oninput = update
 let sh = document.createElement("style")
 sh.innerHTML = `
 .blockname{
@@ -61,6 +71,9 @@ sh.innerHTML = `
 }
 .word{
 	color:#569cd6
+}
+.comment{
+	color:#6a9955
 }
 `
 
