@@ -130,7 +130,7 @@ increment var:
 ; this is version 2
 
 decrement var:
-@++
+@--
  ->++.name ( store )
  getvar (get value )
  '1 -n ( decrement )

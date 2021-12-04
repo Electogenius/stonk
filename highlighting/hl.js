@@ -14,7 +14,7 @@ Rainbow.extend("stonk", [
 Rainbow.extend("stonkblock", [
 	{
 		name: 'text',
-		pattern: /('|\.)[^ ]*/g,
+		pattern: /(^| )('|\.)[^ ]*/g,
 		matches: [{
 			name: 'number',
 			pattern: /'\d+/g
@@ -22,21 +22,21 @@ Rainbow.extend("stonkblock", [
 	},
 	{
 		name: 'operator',
-		pattern: /[+\-*\/%]([a-zA-Z])\b|[=|{}]/g,
+		pattern: /(^| )[+\-*\/%]([a-zA-Z]{1,2})\b|[=|]\b|[\{\}]/g,
 		matches: {
-			1: 'type'
+			2: 'type'
 		}
 	},
 	{
 		name: 'variable',
-		pattern: /(\$|\-&gt;)[^ ]+\b/g,
+		pattern: /(^| )(\$|\-&gt;)[^ ]+\b/g,
 		matches: {
 			1: 'operator'
 		}
 	},
 	{
 		name:'comment',
-		pattern: /\( .* \)/g
+		pattern: /(^| )\( .* \)\b/g
 	}
 ])
 let update = () => {
