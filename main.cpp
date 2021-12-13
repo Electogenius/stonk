@@ -2,7 +2,11 @@
 #define Buffer vector<char>
 char** Args;
 bool Inlib;
+#ifndef __EMSCRIPTEN__
 #include <fstream>
+#else
+#include<emscripten/emscripten.h>
+#endif
 #include <functional>
 #include <iostream>
 #include <map>
@@ -51,6 +55,7 @@ void blockparse(string code) {
 }
 
 void nop() {}
+#ifndef __EMSCRIPTEN__
 int start(int argc, char** argv, bool inlib) {
   Inlib = inlib;
   Args = argv;
@@ -64,7 +69,18 @@ int start(int argc, char** argv, bool inlib) {
   run(blocks.get("main"), "main");
   return 0;
 }
-
+#endif
 int main(int argc, char** args) {
+  #ifndef __EMSCRIPTEN__
   start(argc, args, false);
+  #endif
 }
+#ifdef __EMSCRIPTEN__
+extern "C" {
+EMSCRIPTEN_KEEPALIVE; void runCode(char* args) {
+  blockparse(args);
+  run(blocks.get("main"),"main");
+  stak.clear();
+}
+}
+#endif
