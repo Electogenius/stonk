@@ -77,7 +77,7 @@ int main(int argc, char** args) {
 }
 #ifdef __EMSCRIPTEN__
 extern "C" {
-EMSCRIPTEN_KEEPALIVE; void runCode(char* args) {
+EMSCRIPTEN_KEEPALIVE void runCode(char* args) {
   blockparse(args);
   run(blocks.get("main"),"main");
   stak.clear();

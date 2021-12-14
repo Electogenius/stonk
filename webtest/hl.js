@@ -39,13 +39,13 @@ Rainbow.extend("stonkblock", [
 		pattern: /(^| )\( .* \)\b/g
 	}
 ])
-let update = () => {
-	Rainbow.color(text.value, 'stonk', e => {
-		code.innerHTML = e
-	})
-}
-update()
-text.oninput = update
+// let update = () => {
+// 	Rainbow.color(text.value, 'stonk', e => {
+// 		code.innerHTML = e
+// 	})
+// }
+// update()
+// text.oninput = update
 let sh = document.createElement("style")
 sh.innerHTML = `
 .blockname{

@@ -86,10 +86,11 @@ void $subb(){
   stak.push_back(res);
 }
 void $stack(){
+  string res="";
   for (size_t i = 0; i < stak.size(); i++){
-    cout<<"["<<stak[i]<<"] ";
+    res+="["+stak[i]+"] ";
   }
-  cout<<endl;
+  cout<<res<<endl;
 }
 void $stacknth(){
   auto i = strToInt(pop());
