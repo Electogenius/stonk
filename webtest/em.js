@@ -4962,6 +4962,69 @@ var asm = createWasm();
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__wasm_call_ctors");
 
 /** @type {function(...*):?} */
+var _$pop = Module["_$pop"] = createExportWrapper("$pop");
+
+/** @type {function(...*):?} */
+var _$dup = Module["_$dup"] = createExportWrapper("$dup");
+
+/** @type {function(...*):?} */
+var _$square = Module["_$square"] = createExportWrapper("$square");
+
+/** @type {function(...*):?} */
+var _$if = Module["_$if"] = createExportWrapper("$if");
+
+/** @type {function(...*):?} */
+var _$swap = Module["_$swap"] = createExportWrapper("$swap");
+
+/** @type {function(...*):?} */
+var _$repeat = Module["_$repeat"] = createExportWrapper("$repeat");
+
+/** @type {function(...*):?} */
+var _$times = Module["_$times"] = createExportWrapper("$times");
+
+/** @type {function(...*):?} */
+var _$stob = Module["_$stob"] = createExportWrapper("$stob");
+
+/** @type {function(...*):?} */
+var _$btos = Module["_$btos"] = createExportWrapper("$btos");
+
+/** @type {function(...*):?} */
+var _$mod = Module["_$mod"] = createExportWrapper("$mod");
+
+/** @type {function(...*):?} */
+var _$nth = Module["_$nth"] = createExportWrapper("$nth");
+
+/** @type {function(...*):?} */
+var _$del = Module["_$del"] = createExportWrapper("$del");
+
+/** @type {function(...*):?} */
+var _$strlength = Module["_$strlength"] = createExportWrapper("$strlength");
+
+/** @type {function(...*):?} */
+var _$addb = Module["_$addb"] = createExportWrapper("$addb");
+
+/** @type {function(...*):?} */
+var _$subb = Module["_$subb"] = createExportWrapper("$subb");
+
+/** @type {function(...*):?} */
+var _$stack = Module["_$stack"] = createExportWrapper("$stack");
+
+/** @type {function(...*):?} */
+var _$stacknth = Module["_$stacknth"] = createExportWrapper("$stacknth");
+
+/** @type {function(...*):?} */
+var _$gets = Module["_$gets"] = createExportWrapper("$gets");
+
+/** @type {function(...*):?} */
+var _$prints = Module["_$prints"] = createExportWrapper("$prints");
+
+/** @type {function(...*):?} */
+var _$run = Module["_$run"] = createExportWrapper("$run");
+
+/** @type {function(...*):?} */
+var _$stacklen = Module["_$stacklen"] = createExportWrapper("$stacklen");
+
+/** @type {function(...*):?} */
 var _runCode = Module["_runCode"] = createExportWrapper("runCode");
 
 /** @type {function(...*):?} */

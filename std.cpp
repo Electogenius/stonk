@@ -1,15 +1,28 @@
 #include <map>
 using namespace std;
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+extern "C"{
+#endif
 void $pop() {
   stak.pop_back();
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $dup() {
   stak.push_back(stak.back());
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $square() {
   auto h = strToInt(pop());
   stak.push_back(to_string(h * h));
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $if() {
   string Else = pop(), If = pop(), cond = stak.back();
   if (cond != "" && cond != "0") {
@@ -18,11 +31,17 @@ void $if() {
     run(Else);
   }
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $swap() {
   string a = pop(), b = pop();
   stak.push_back(a);
   stak.push_back(b);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $repeat() {
   auto num = strToInt(pop());
   string str(pop());
@@ -32,6 +51,9 @@ void $repeat() {
   }
   stak.push_back(res);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $times() {
   auto times = strToInt(pop());
   string code = pop();
@@ -39,6 +61,9 @@ void $times() {
     run(code);
   }
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $stob() {
   string arr = pop();
   Buffer buf;
@@ -48,6 +73,9 @@ void $stob() {
   }
   stak.push_back(bufToStr(buf));
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $btos() {
   string h = "";
   Buffer buf = strToBuf(pop());
@@ -56,20 +84,35 @@ void $btos() {
   }
   stak.push_back(h.substr(0, h.length() - 1));
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $mod() {
   auto a = (strToInt(pop())), b = (strToInt(pop()));
   stak.push_back(to_string(b % a));
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $nth() {
   auto i = strToInt(pop());
   stak.push_back((string) "" + pop()[i]);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $del() {
   vars.erase(pop());
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $strlength() {
   stak.push_back(to_string(pop().length()));
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $addb(){
   string a=pop(), b=pop();
   for (size_t i = a.length(); i--;){
@@ -78,6 +121,9 @@ void $addb(){
   }
   stak.push_back(a);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $subb(){
   string a=pop(), b=pop(), res="";
   for (size_t i = 0; i < a.length(); i++){
@@ -85,6 +131,9 @@ void $subb(){
   }
   stak.push_back(res);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $stack(){
   string res="";
   for (size_t i = 0; i < stak.size(); i++){
@@ -92,24 +141,42 @@ void $stack(){
   }
   cout<<res<<endl;
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $stacknth(){
   auto i = strToInt(pop());
   stak.push_back(stak[i]);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $gets(){
   string h;
   cin>>h;
   stak.push_back(h);
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $prints(){
   cout<<stak.back();
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $run(){
   run(pop());
 }
+#ifdef __EMSCRIPTEN__
+EMSCRIPTEN_KEEPALIVE
+#endif
 void $stacklen(){
   stak.push_back(to_string(stak.size()));
 }
+#ifdef __EMSCRIPTEN__
+}
+#endif
 // part of the standard library can be written in just stonk so...
 void blockparse(string code);
 void stonklib() {

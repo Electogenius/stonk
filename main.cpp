@@ -1,4 +1,4 @@
-#define log(a) cout << a << endl
+#define log(a) cout << (a) << endl
 #define Buffer vector<char>
 char** Args;
 bool Inlib;
@@ -79,6 +79,7 @@ int main(int argc, char** args) {
 extern "C" {
 EMSCRIPTEN_KEEPALIVE void runCode(char* args) {
   blockparse(args);
+  stds();
   run(blocks.get("main"),"main");
   stak.clear();
 }
