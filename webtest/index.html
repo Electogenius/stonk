@@ -11,8 +11,8 @@
 		--theme: #05d
 	}
 
-	textarea,
-	pre {
+	textareakinda,
+	.leditthing {
 		position: absolute;
 		resize: none;
 		top: 0;
@@ -46,30 +46,47 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		height: 50vh
+		height: 40vh
+	}
+
+	.leditthing {
+		color: #6a9955 !important;
 	}
 </style>
 <button onclick="
+frame.contentWindow.location=frame.contentWindow.location.href
+setTimeout(()=>{
+
+	let doc = frame.contentWindow.document;
+		window.total = 0
+		doc.querySelectorAll('body *:not(textarea)').forEach(e => e.style.opacity = '0')
+		doc.querySelector('textarea').style = 'position:absolute;top:0;left:0;width:100%;height:100%;'
+		doc.querySelector('textarea').style.opacity = '1'
+		frame.contentWindow.eval(`window.stonk=cwrap('runCode',null,['string'])`)
+
 frame.contentWindow.document.querySelector('textarea').value=''
 var ta=frame.contentWindow.document.querySelector('textarea')
 frame.contentWindow.stonk(e.textarea.innerText)
 ta.value=ta.value.slice(total)
 console.log(total)
 window.total+=ta.value.length
+},500)
 ">run</button>
 <script>
-	var e = new Ledit.or({ language: 'stonk', height: innerHeight / 2, width: innerWidth,
-value:"@main 'hi puts;" });
+	var e = new Ledit.or({
+		language: 'stonk', height: innerHeight / 2, width: innerWidth,
+		value: "@main 'hi puts;"
+	});
 	e.start()
 	e.textarea.style.top = e.overlay.style.top = '5'
 	e.overlay.style.position = 'absolute'
 	e.overlay.style.width = '95%'
 	setTimeout(() => {
 		let doc = frame.contentWindow.document;
-		window.total=0
-		doc.querySelectorAll("body *:not(textarea)").forEach(e=>e.style.opacity='0')
+		window.total = 0
+		doc.querySelectorAll("body *:not(textarea)").forEach(e => e.style.opacity = '0')
 		doc.querySelector("textarea").style = 'position:absolute;top:0;left:0;width:100%;height:100%;'
-		doc.querySelector("textarea").style.opacity='1'
+		doc.querySelector("textarea").style.opacity = '1'
 		frame.contentWindow.eval("window.stonk=cwrap('runCode',null,['string'])")
 	}, 500)
 </script>
